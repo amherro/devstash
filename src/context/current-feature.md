@@ -16,4 +16,4 @@
 
 ## History
 
-<!-- Keep this updated. Earliest to latest -->
+- Initial setup of Next.js and Tailwind CSS - (Completed)

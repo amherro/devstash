@@ -9,16 +9,16 @@
 
 Developers scatter their essential resources across a dozen tools:
 
-| Where it lives today | What's lost there |
-|---|---|
-| VS Code / Notion | Code snippets |
-| Chat history | AI prompts & workflows |
-| Buried project folders | Context files |
-| Browser bookmarks | Useful links |
-| Random folders | Documentation |
-| `.txt` files | Terminal commands |
-| GitHub Gists | Project templates |
-| Bash history | One-liner commands |
+| Where it lives today   | What's lost there      |
+| ---------------------- | ---------------------- |
+| VS Code / Notion       | Code snippets          |
+| Chat history           | AI prompts & workflows |
+| Buried project folders | Context files          |
+| Browser bookmarks      | Useful links           |
+| Random folders         | Documentation          |
+| `.txt` files           | Terminal commands      |
+| GitHub Gists           | Project templates      |
+| Bash history           | One-liner commands     |
 
 The result: **constant context switching, lost knowledge, and inconsistent workflows.**
 
@@ -28,12 +28,12 @@ The result: **constant context switching, lost knowledge, and inconsistent workf
 
 ## 🧑‍💻 Target Users
 
-| Persona | Core Need |
-|---|---|
-| 🧑‍💻 Everyday Developer | Quick access to snippets, commands, and links |
-| 🤖 AI-First Developer | Store and organize prompts, workflows, and context files |
-| 🎓 Content Creator / Educator | Save course notes and reusable code examples |
-| 🏗️ Full-Stack Builder | Patterns, boilerplates, and API references |
+| Persona                       | Core Need                                                |
+| ----------------------------- | -------------------------------------------------------- |
+| 🧑‍💻 Everyday Developer         | Quick access to snippets, commands, and links            |
+| 🤖 AI-First Developer         | Store and organize prompts, workflows, and context files |
+| 🎓 Content Creator / Educator | Save course notes and reusable code examples             |
+| 🏗️ Full-Stack Builder         | Patterns, boilerplates, and API references               |
 
 ---
 
@@ -43,15 +43,15 @@ The result: **constant context switching, lost knowledge, and inconsistent workf
 
 Every piece of knowledge is an **Item**. Items have a built-in system type:
 
-| Icon | Type | Description |
-|---|---|---|
-| `</>` | **Snippet** | Code in any language |
-| 🤖 | **Prompt** | AI prompts and chains |
-| 📝 | **Note** | Markdown notes and docs |
-| `$` | **Command** | CLI / terminal commands |
-| 📄 | **File** | Templates, configs, context files |
-| 🖼️ | **Image** | Screenshots, diagrams, assets |
-| 🔗 | **URL** | Bookmarked links with notes |
+| Icon  | Type        | Description                       |
+| ----- | ----------- | --------------------------------- |
+| `</>` | **Snippet** | Code in any language              |
+| 🤖    | **Prompt**  | AI prompts and chains             |
+| 📝    | **Note**    | Markdown notes and docs           |
+| `$`   | **Command** | CLI / terminal commands           |
+| 📄    | **File**    | Templates, configs, context files |
+| 🖼️    | **Image**   | Screenshots, diagrams, assets     |
+| 🔗    | **URL**     | Bookmarked links with notes       |
 
 > 🔒 **Pro users** can define custom item types with a name, icon, and color.
 
@@ -68,6 +68,7 @@ Group related items — mixed types allowed — into named collections.
 ### C) Search
 
 Full-text search across:
+
 - Item content
 - Tags
 - Titles
@@ -98,12 +99,12 @@ Full-text search across:
 
 > Powered by **OpenAI `gpt-4o-mini`** (see note below)
 
-| Feature | Description |
-|---|---|
-| 🏷️ Auto-tagging | Suggest relevant tags based on item content |
-| 📋 AI Summary | Generate a short description for any item |
-| 🔍 Explain Code | Plain-English explanation of a snippet |
-| 🪄 Prompt Optimizer | Improve and refine AI prompts |
+| Feature             | Description                                 |
+| ------------------- | ------------------------------------------- |
+| 🏷️ Auto-tagging     | Suggest relevant tags based on item content |
+| 📋 AI Summary       | Generate a short description for any item   |
+| 🔍 Explain Code     | Plain-English explanation of a snippet      |
+| 🪄 Prompt Optimizer | Improve and refine AI prompts               |
 
 > ⚠️ **Model note:** `gpt-5-nano` is not a current OpenAI model name. The likely intended model is **`gpt-4o-mini`** — fast, cheap, and well-suited for tagging, summarization, and explanation tasks. Confirm before implementation.
 
@@ -113,10 +114,10 @@ Full-text search across:
 
 Stripe handles subscriptions and webhooks for plan syncing.
 
-| Plan | Price | Item Limit | Collections | AI Features | File Uploads | Custom Types | Export |
-|---|---|---|---|---|---|---|---|
-| 🆓 **Free** | $0/mo | 50 items | 3 | ❌ | Images only | ❌ | ❌ |
-| ⚡ **Pro** | $8/mo · $72/yr | Unlimited | Unlimited | ✅ | All types | ✅ | ✅ (JSON/ZIP) |
+| Plan        | Price          | Item Limit | Collections | AI Features | File Uploads | Custom Types | Export        |
+| ----------- | -------------- | ---------- | ----------- | ----------- | ------------ | ------------ | ------------- |
+| 🆓 **Free** | $0/mo          | 50 items   | 3           | ❌          | Images only  | ❌           | ❌            |
+| ⚡ **Pro**  | $8/mo · $72/yr | Unlimited  | Unlimited   | ✅          | All types    | ✅           | ✅ (JSON/ZIP) |
 
 > 💡 **Stripe** — subscriptions + webhooks to sync `isPro`, `stripeCustomerId`, `stripeSubscriptionId` on the `User` model.
 > 🔗 [Stripe Docs](https://stripe.com/docs) · [Next.js + Stripe Guide](https://vercel.com/guides/getting-started-with-nextjs-typescript-stripe)
@@ -220,6 +221,7 @@ model ItemTag {
 ```
 
 > 💡 **Schema tips:**
+>
 > - Add `@@unique([name, userId])` to `Tag` to prevent duplicate tags per user (added above).
 > - Add `onDelete: Cascade` to `ItemTag` relations so orphaned join rows are cleaned up automatically.
 > - Consider a `lastAccessedAt DateTime?` field on `Item` to power the "Recently Used" feature without a separate table.
@@ -228,20 +230,20 @@ model ItemTag {
 
 ## 🧱 Tech Stack
 
-| Category | Choice | Links |
-|---|---|---|
-| Framework | **Next.js 15 (React 19)** | [nextjs.org](https://nextjs.org) |
-| Language | TypeScript | [typescriptlang.org](https://typescriptlang.org) |
-| Database | **Neon PostgreSQL** + Prisma ORM | [neon.tech](https://neon.tech) · [prisma.io](https://prisma.io) |
-| Caching | Redis *(optional)* | [upstash.com](https://upstash.com) (serverless Redis, Vercel-friendly) |
-| File Storage | **Cloudflare R2** | [developers.cloudflare.com/r2](https://developers.cloudflare.com/r2) |
-| CSS / UI | **Tailwind CSS v4** + shadcn/ui | [tailwindcss.com](https://tailwindcss.com) · [ui.shadcn.com](https://ui.shadcn.com) |
-| Auth | **NextAuth v5** (email + GitHub) | [authjs.dev](https://authjs.dev) |
-| AI | OpenAI `gpt-4o-mini` | [platform.openai.com](https://platform.openai.com) |
-| Billing | **Stripe** | [stripe.com/docs](https://stripe.com/docs) |
-| Deployment | **Vercel** | [vercel.com](https://vercel.com) |
-| Monitoring | Sentry *(later)* | [sentry.io](https://sentry.io) |
-| Syntax Highlighting | **Shiki** or **Prism** | [shiki.style](https://shiki.style) |
+| Category            | Choice                           | Links                                                                               |
+| ------------------- | -------------------------------- | ----------------------------------------------------------------------------------- |
+| Framework           | **Next.js 15 (React 19)**        | [nextjs.org](https://nextjs.org)                                                    |
+| Language            | TypeScript                       | [typescriptlang.org](https://typescriptlang.org)                                    |
+| Database            | **Neon PostgreSQL** + Prisma ORM | [neon.tech](https://neon.tech) · [prisma.io](https://prisma.io)                     |
+| Caching             | Redis _(optional)_               | [upstash.com](https://upstash.com) (serverless Redis, Vercel-friendly)              |
+| File Storage        | **Cloudflare R2**                | [developers.cloudflare.com/r2](https://developers.cloudflare.com/r2)                |
+| CSS / UI            | **Tailwind CSS v4** + shadcn/ui  | [tailwindcss.com](https://tailwindcss.com) · [ui.shadcn.com](https://ui.shadcn.com) |
+| Auth                | **NextAuth v5** (email + GitHub) | [authjs.dev](https://authjs.dev)                                                    |
+| AI                  | OpenAI `gpt-4o-mini`             | [platform.openai.com](https://platform.openai.com)                                  |
+| Billing             | **Stripe**                       | [stripe.com/docs](https://stripe.com/docs)                                          |
+| Deployment          | **Vercel**                       | [vercel.com](https://vercel.com)                                                    |
+| Monitoring          | Sentry _(later)_                 | [sentry.io](https://sentry.io)                                                      |
+| Syntax Highlighting | **Shiki** or **Prism**           | [shiki.style](https://shiki.style)                                                  |
 
 ---
 
@@ -322,6 +324,7 @@ flowchart TD
 - **Full-screen item editor** — with Markdown support and syntax highlighting
 
 ### Responsive
+
 - Mobile: sidebar becomes a bottom drawer
 - Touch-optimized buttons and icon sizes
 
@@ -339,14 +342,24 @@ git switch -c lesson-03-items-crud
 ```
 
 **Tools:** Cursor · Claude Code · ChatGPT for AI pair-programming assistance
-**CI/CD:** GitHub Actions *(optional, for later)*
-**Error Monitoring:** Sentry *(post-MVP)*
+**CI/CD:** GitHub Actions _(optional, for later)_
+**Error Monitoring:** Sentry _(post-MVP)_
 
 ---
+
+### Design References
+
+#### Screenshots
+
+Refer to the screenshots below as a base for the dashboard UI. It does not have to be exact, use it as a reference:
+
+- @context/screenshots/dashboard-ui-main.png
+- @context/screenshots/dashboard-ui-drawer.png
 
 ## 🧭 Roadmap
 
 ### 🟢 MVP
+
 - [ ] Project setup (Next.js, Prisma, Neon, Tailwind, shadcn)
 - [ ] Auth (email + GitHub via NextAuth v5)
 - [ ] Items CRUD (all system types)
@@ -357,6 +370,7 @@ git switch -c lesson-03-items-crud
 - [ ] Dark mode UI
 
 ### 🔵 Pro Phase
+
 - [ ] Stripe billing + upgrade flow
 - [ ] AI features (auto-tag, summarize, explain, prompt polish)
 - [ ] Custom item types
@@ -364,6 +378,7 @@ git switch -c lesson-03-items-crud
 - [ ] Export (JSON / ZIP)
 
 ### 🟣 Future Enhancements
+
 - [ ] Shared collections
 - [ ] Team / Org plans
 - [ ] VS Code extension
@@ -378,4 +393,4 @@ git switch -c lesson-03-items-crud
 
 ---
 
-*🏗️ DevStash — Store Smarter. Build Faster.*
+_🏗️ DevStash — Store Smarter. Build Faster._
